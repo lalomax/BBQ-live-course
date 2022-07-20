@@ -44,10 +44,14 @@ h2 + p {
  
 .top-text {
   font-size: 0.625rem;
+  margin: 0;
+  padding: 2px;
   font-weight: 900;
   color: #f18119;
   text-transform: uppercase;
   order: -1;
+  border-top: 10px solid dodgerblue;
+  border-image: linear-gradient(to left, red, blue) 1; /* apply effect to border top */
 }
 
 .fine-print {
@@ -65,9 +69,14 @@ strong {
 .intro {
   background-color: #404040; /* lowest connections */
   background-image: url(images/dark-ribs.jpg);
+  background-blend-mode: multiply; /* make effect between background and image 
+  * multiply - keep de darkest pixels
+  * screen 
+  * overlay
+  */
   background-size: cover;
   background-position: center;
-  padding: 0 .5em 1em;
+  padding: 0 .5em 2em;
   display: flex; /* with display flex margins don't collapse */
   flex-direction: column; 
   justify-content: space-between;
@@ -80,6 +89,67 @@ strong {
 
 .main-content {
   padding: 2em 1em;
+}
+
+/* > direct child of parent */
+
+.intro > *,
+.main-content > * {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =============
+   form
+   ============= */
+
+.email-collector {
+  width: 80%;
+  max-width: 300px;
+}
+
+input, .btn {
+  width: 100%;
+  border-radius: 5px;
+}
+
+input {
+  font-family: inherit;
+  text-align: inherit;
+  margin-bottom: .75em;
+  padding: .25em;
+  border: 1px solid #404040;
+  transform: scale(1);
+  transition: transform 250ms;
+}
+
+input:focus {
+  transform: scale(1.1);
+}
+
+.btn {
+  display: inline-block;
+  padding: 1em 1.5em;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #404040;
+  color: white;
+  transform: scale(1);
+  transition: background-color 250ms, transform .250ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus{
+  background-color: #f18119;
+  transform: scale(1.1)
 }
 
 /* =============
